@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+<script>
+function Animal(nom, couleur) {
+  this.nom = nom;
+  this.couleur = couleur;
+}
+
+Animal.prototype.parler = function () {
+  console.log("Cet animal fait un bruit générique");
+};
+
+function Chat(...props) {
+  Animal.apply(this, props);
+}
+
+Chat.prototype = Object.create(Animal.prototype);
+
+Chat.prototype.miauler = function () {
+  console.log("Miaou!");
+};
+
+const chatPersan = new Chat("Chat Persan", "Blanc");
+chatPersan.parler(); // Cet animal fait un bruit générique
+chatPersan.miauler(); // Miaou!
+
+
+</script>
+
+</body>
+</html>
